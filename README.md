@@ -33,11 +33,11 @@ __________________________________________
 PMI scores calcuate the MI score with the addition parameter of the frequency of occurance of the words/phrases in the text. This causes the scores to be more reasonable since they are normalized as opposed to MI which calculates mututal information without accounting for the occurance. The scores are calculated for all reviews, positive reviews only and negative reviews only. 
 __________________________________________
 ## Findings:
-*Note: detailed explanations into each of the graphs for the finding are present in the .ipynb file*
+*Note: detailed explanations into each of the graphs for the finding are present in the .ipynb file*<br>
 The rating of the vader (written) score vs. the binary review can be visualized as ![All hotels](/images/all.png)<br><br>
 The histogram of vader score vs the 1-5 rating is visualized as: 
-![vader_vs_binary](/images/both_histogram.png)<br><br> Given the variability of the vader intrepretation of the reviews, it is understandable that it is more spread out. 
+![vader_vs_binary](/images/both_histogram.png)<br><br> Given the variability of the vader intrepretation of the reviews, it is understandable that it is more spread out. <br>
 The overall distribution of positive vs negative ratings is given as: 
-![pos_vs_neg](/images/box_posneg.png)
+![pos_vs_neg](/images/box_posneg.png)<br>
 Finally, the pcolormesh of the vader score vs ratings draws a comparison between the performance of ratings and the vader score. 
 ![pcolormesh](/images/pcolormesh.png)
