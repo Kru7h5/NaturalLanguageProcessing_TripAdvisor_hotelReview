@@ -12,18 +12,18 @@ The CMD command used for this example is:
 where the ID was 154922- corresponding to British Columbia. 
 __________________________________________
 ## Exploration1 - Vader score vs ground score:
-> Ground score: refers to the a binary score of "positive" or "negative" experience. <br>
-> Vader score: refers to the score assigned to the text review. NLTK's ``` SentimentIntensityAnalyzer() ``` tool was used to assign sentiment scores to each of the reviews. Each review has a "compound score", "positive", "negative" and "neutral" score. Please refer to <a href="https://www.nltk.org/api/nltk.sentiment.html">NLTK-Sentiment analysis</a> to read more on the scoring process. 
+> - Ground score: refers to the a binary score of "positive" or "negative" experience. <br>
+> - Vader score: refers to the score assigned to the text review. NLTK's ``` SentimentIntensityAnalyzer() ``` tool was used to assign sentiment scores to each of the reviews. Each review has a "compound score", "positive", "negative" and "neutral" score. Please refer to <a href="https://www.nltk.org/api/nltk.sentiment.html">NLTK-Sentiment analysis</a> to read more on the scoring process. 
 __________________________________________
 ## Exploration2 - Frequency Analysis:
 Retrieving the top-k words used in a positive review vs the top-k words used in a negative review. Induvidual words without context offered little insight into the reviews or provided any valuable feedback on the performance of the hotels. This was treated as a good starting point for further exploration in phrase analysis and MI(mututal information) and PMI (pointwise mutual information)
 __________________________________________
 ## Exploration3 - Language processing:
 A pipeline was constructed so that the raw reviews could be fed into the pipeline and the resulting dataframe would contain reviews with scores attached to the popular identified phrases. A list of the top-k phrases were also retrieved along with the number of occurances for visual inspection. 
-> Chunking: <br> A chunking string was used to primarily concentrate on nouns and adjectives. The `RegexpParser` of the NLTK library was used for the chunker to perform POS tagging.  
-for more grammatical extraction: <a href="https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html">Part-of-speech tags</a> 
-> Stop words: <br> NLTK corpus for stop words was used to identify and remove stop words. Length of words was also taken into account to extract only useful words. 
-> Stemming and lemmatization: <br> `nltk.WordNetLemmatizer()` and ` nltk.stem.porter.PorterStemmer()` were used to perform stemming and lemmatization. 
+> - Chunking: <br> A chunking string was used to primarily concentrate on nouns and adjectives. The `RegexpParser` of the NLTK library was used for the chunker to perform POS tagging.  
+for more grammatical extraction: <a href="https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html">Part-of-speech tags</a> <br>
+> - Stop words: <br> NLTK corpus for stop words was used to identify and remove stop words. Length of words was also taken into account to extract only useful words. <br>
+> - Stemming and lemmatization: <br> `nltk.WordNetLemmatizer()` and ` nltk.stem.porter.PorterStemmer()` were used to perform stemming and lemmatization. 
 __________________________________________
 ## Exploration3 - Mutual Information:
 The mutual information score for popular phrases were calculated in the `getMI` function using the `metrics.mutual_info_score` function from the `sklearn` library. This information was then used to compare to the PMI (pointwise mutual information) score to understand the difference. 
@@ -33,5 +33,11 @@ __________________________________________
 PMI scores calcuate the MI score with the addition parameter of the frequency of occurance of the words/phrases in the text. This causes the scores to be more reasonable since they are normalized as opposed to MI which calculates mututal information without accounting for the occurance. The scores are calculated for all reviews, positive reviews only and negative reviews only. 
 __________________________________________
 ## Findings:
-
-
+*Note: detailed explanations into each of the graphs for the finding are present in the .ipynb file*
+The rating of the vader (written) score vs. the binary review can be visualized as ![All hotels](/images/all.png)<br><br>
+The histogram of vader score vs the 1-5 rating is visualized as: 
+![vader_vs_binary](/images/both_histogram.png)<br><br> Given the variability of the vader intrepretation of the reviews, it is understandable that it is more spread out. 
+The overall distribution of positive vs negative ratings is given as: 
+![pos_vs_neg](/images/box_posneg.png)
+Finally, the pcolormesh of the vader score vs ratings draws a comparison between the performance of ratings and the vader score. 
+![pcolormesh](/images/pcolormesh.png)
